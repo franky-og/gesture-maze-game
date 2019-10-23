@@ -9,7 +9,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Asemic Writing Teachable Machine</title>
+  <title>Action Maze</title>
+  <link rel="stylesheet" href="style.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
@@ -29,46 +30,72 @@
     display: inline;
     font-size: 16px;
   }
-  .emoji {
-    font-size: 24px;
-  }
+  
   </style>
 </head>
 
 <body>
-  <h2>Asemic Writing Teachable Machine</h2>
+  <h2>Action Maze</h2>
   <p>KNN Classification on Webcam Images with mobileNet. Built with p5.js</p>
-  <p><br>Adapted from <a href="https://github.com/yining1023/machine-learning-for-the-web/tree/master/week2-ImageClassifier-KNN-Posenet/KNNClassification_Video">this example</a>.</p>
+  <div id= "buttonDIV">
+  <button id= "easymode">Easy Difficulty</button>
+  <button id= "mediummode">Medium Difficulty</button>
+  <button id= "hardmode">Hard Difficulty</button>
+  <button id= "scoreBTN">View High Scores</button>
+</div>
+<div id= "timerDIV">
+  <label id= timerlabel>Current Time</label>
+<span id= "minutes">00</span>:<span id= "seconds">00</span>
+</div>
+<div id= "formDIV" style="display: none;">
+  <form id= "highscoreform">
+    <h3>SAVE YOUR SCORE</h3>
+    <label id= difficultylabel>Difficulty:</label>
+    <input id= "difficulty" type= "text" name="level" value="" readonly= "readonly"><br><br>
+    <label id= "totalscore">Score:</label>
+    <input id= "timescore" type= "text" name= "score" value="" readonly= "readonly"><br><br>
+    <input type= "text" name= "playername" value="" placeholder="Enter your name..."><br><br>
+    <input type="submit" name="submit" value="Save" class="submit">
+  </form>
+</div>
+<div id= "highscoreDIV" style="display: none;">
+</div>
+  <!-- <p><br>Adapted from <a href="https://github.com/yining1023/machine-learning-for-the-web/tree/master/week2-ImageClassifier-KNN-Posenet/KNNClassification_Video">this example</a>.</p> -->
 
   <div id="videoContainer"></div>
   <p id="status">Loading Model...</p>
-  <div>
+  <!-- <div>
     <button id="load">Load Dataset</button><br>
-    <p>Make your own classifiers for each element of this asemic writing.<br>
+    <p>Make your own classifiers for each element of this game.<br>
       and use the 'Save Dataset' button below to create your own myDataset.json file,<br>
       and replace the myDataset.json in this folder.'
     </p>
-  </div>
+  </div> -->
   <br><p>
-    <button id="addClassWrite">Add an Example to Class Write</button>
-    <button id="resetWrite">Reset Class Write</button>
-    <p><span id="exampleWrite">0</span> Write examples</p>
-    <p>| Confidence: <span id="confidenceWrite">0</span></p>
+    <button id="addClassUp">Add an Example to Class Up</button>
+    <button id="resetUp">Reset Class Up</button>
+    <p><span id="exampleUp">0</span> Up examples</p>
+    <p>| Confidence: <span id="confidenceUp">0</span></p>
 
-    <br><button id="addClassWritelong">Add an Example to Class Writelong</button>
-    <button id="resetWritelong">Reset Class Write</button>
-    <p><span id="exampleWritelong">0</span> Write examples</p>
-    <p>| Confidence: <span id="confidenceWritelong">0</span></p>
+    <br><button id="addClassLeft">Add an Example to Class Left</button>
+    <button id="resetLeft">Reset Class Write</button>
+    <p><span id="exampleLeft">0</span> Write examples</p>
+    <p>| Confidence: <span id="confidenceLeft">0</span></p>
 
-    <br><button id="addClassSpace">Add an Example to Class Space</button>
-    <button id="resetSpace">Reset Class Space</button>
-    <p><span id="exampleSpace">0</span> Space examples</p>
-    <p>| Confidence: <span id="confidenceSpace">0</span></p>
+    <br><button id="addClassDown">Add an Example to Class Down</button>
+    <button id="resetDown">Reset Class Down</button>
+    <p><span id="exampleDown">0</span> Down examples</p>
+    <p>| Confidence: <span id="confidenceDown">0</span></p>
 
-    <br><button id="addClassNewline">Add an Example to Class Newline</button>
-    <button id="resetNewline">Reset Class Newline</button>
-    <p><span id="exampleNewline">0</span> Newline examples</p>
-    <p>| Confidence: <span id="confidenceNewline">0</span></p>
+    <br><button id="addClassRight">Add an Example to Class Right</button>
+    <button id="resetRight">Reset Class Right</button>
+    <p><span id="exampleRight">0</span> Right examples</p>
+    <p>| Confidence: <span id="confidenceRight">0</span></p>
+
+    <br><button id="addClassStill">Add an Example to Class Still</button>
+    <button id="resetStill">Reset Class Still</button>
+    <p><span id="exampleStill">0</span> Still examples</p>
+    <p>| Confidence: <span id="confidenceStill">0</span></p>
   </p>
   <br/>
   <p>
@@ -80,8 +107,9 @@
     as Class: <span id="result">...</span>
     with a confidence of <span id="confidence">...</span>
   </p>
-  <div><button id="save">Save Dataset</button></div>
+  <!-- <div><button id="save">Save Dataset</button></div>  -->
   <script src="sketch.js"></script>
+  <img src="erichead.png" style="display: none;">
 </body>
 
 </html>

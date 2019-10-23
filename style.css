@@ -1,0 +1,28 @@
+video {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+
+  #buttonDIV {
+    position: absolute;
+  top: 80px;
+  right: 25%;
+  }
+
+  #formDIV {
+    position: absolute;
+    top: 150px;
+    right: 15%;
+  }
+
+  #timerDIV {
+    position: absolute;
+    top: 30px;
+    right: 20%;
+  }
+
+  #highscoreDIV {
+    position: absolute;
+    top: 100px;
+    right: 15%;
+  }
