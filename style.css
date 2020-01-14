@@ -23,6 +23,13 @@ video {
 
   #highscoreDIV {
     position: absolute;
-    top: 100px;
+    top: 350px;
     right: 15%;
   }
+
+  /* body {
+    color: rgb(0, 4, 255);
+    background-image: url("henrykim.jpeg");
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
+  /* } */ 
